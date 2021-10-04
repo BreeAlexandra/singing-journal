@@ -12,8 +12,6 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 /* GENERAL STYLES */
 
-@import url ('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
-
 .App {
   font-size: 125%;
   letter-spacing: 0.2rem;
@@ -38,7 +36,7 @@ header {
 }
 
 h1 {
-  font-family: 'Ephesis', cursive;
+  font-family: cursive;
   font-size: 6rem;
   color: rgb(253, 243, 230);
   display: flex;
@@ -51,10 +49,11 @@ h1 {
 
 main {
   background-color: rgb(177, 177, 177);
+  padding-bottom: 75px;
 }
 
 form {
-  font-family: 'Ephesis', cursive;
+  font-family: cursive;
   font-size: 2rem;
   color: rgb(34, 34, 34);
   font-weight: bold;
@@ -88,7 +87,31 @@ textarea {
 }
 
 ::placeholder {
-  font-family: 'Ephesis', cursive;
+  font-family: cursive;
+  padding: 10px;
+}
+
+button {
+  font-family: cursive;
+  background-color: rgb(99, 3, 99);
+  color: rgb(253, 243, 230);
+  margin: 25px 25px 0 25px;
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(253, 243, 230);
+  color: rgb(99, 3, 99);
+  transition: .5s ease-in-out;
+}
+
+.inputContainer {
+  background-color: rgb(253, 243, 230);
+  font-family: cursive;
+  border-radius: 5px;
+  margin: 0 25px;
   padding: 10px;
 }
 
