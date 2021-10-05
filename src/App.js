@@ -1,3 +1,14 @@
+// Make a React App!
+// Get user input and store using Firebase
+    // On page load connect to Firebase
+    // Form with Date/Time/Outcome (Stretch - WEEKLY GOAL - How you're feeling and technique to focus on)
+    // On form submit send user input to Firebase
+
+// Display user input
+
+
+
+
 import { useState, useEffect } from 'react';
 import realtime from './firebase.js'
 import { ref, onValue, push } from 'firebase/database';
@@ -12,16 +23,21 @@ const [userTime, setUserTime] = useState('');
 const [userAccomp, setUserAccomp] = useState(''); 
 const [userJournal, setUserJournal] = useState([]);
 
+
+// use useEffect with an empty dependency array so the call function is only called once
   useEffect(() => {
+
+    // make a const to reference the realtime database
     const dbRef = ref(realtime);
-    
-
-
+  
+  // make a 'snapshot' of the database when there is new data in firebase
   onValue(dbRef, (snapshot) => {
       const myData = snapshot.val();
       
+      // make an empty array to hold the user entry
       const entryArray = [];
 
+      // loop through myData and save user entries into an object
       for (let key in myData) {
         const journalObject= {
           key: key,
@@ -30,12 +46,16 @@ const [userJournal, setUserJournal] = useState([]);
           text: myData[key].text
         }
         
+        // push the new objects into an array
         entryArray.push(journalObject);
       }
+
+      // set the entryArray into state
       setUserJournal(entryArray);
     });
   }, []);
 
+  // store user input in state as they enter it
   const handleDateChange = (e) => {
     setUserDate(e.target.value);
   }
@@ -47,6 +67,7 @@ const [userJournal, setUserJournal] = useState([]);
   } 
 
 
+  // push user input to firebase on submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -98,7 +119,7 @@ const [userJournal, setUserJournal] = useState([]);
             value={userAccomp}
             name="accomplishment" 
             id="accomplishment" placeholder='What I accomplished today...'></textarea>
-            <button>Log Today's Practice</button>
+            <button className='log'>Log Today's Practice</button>
         </form>
         <div className="inputContainer">
           {

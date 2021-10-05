@@ -2,7 +2,8 @@ import { ref, remove } from 'firebase/database';
 import realtime from './firebase.js'
 
 function UserInput(props) {
-    
+
+// target the key so user can delete input from firebase (aka from the page) on button click
 const handleRemove = (removeKey) => {
     const nodeRef = ref(realtime, removeKey);
 
