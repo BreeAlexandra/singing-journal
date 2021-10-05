@@ -49,17 +49,17 @@ const [userJournal, setUserJournal] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+      const dbRef = ref(realtime);
+  
+      push(dbRef, {date:userDate, time:userTime, text:userAccomp});
+
+      setUserDate('');
+      setUserTime('');
+      setUserAccomp('');
+
     
-    const dbRef = ref(realtime);
-
-    push(dbRef, {date:userDate, time:userTime, text:userAccomp});
   }
-
-  
-  
-
-  
-
 
   return (
     <div className="App">
@@ -103,17 +103,19 @@ const [userJournal, setUserJournal] = useState([]);
         <div className="inputContainer">
           {
             userJournal.map((infoEntered) => {
-                return (
-                  
-                  <UserInput 
-                  key={infoEntered.key}
-                  date={infoEntered.date}
-                  time={infoEntered.time}
-                  text={infoEntered.text}
-                  />
+              
+                return (  
+                    <UserInput 
+                    key={infoEntered.key}
+                    removeKey={infoEntered.key}
+                    date={infoEntered.date}
+                    time={infoEntered.time}
+                    text={infoEntered.text}
+                    />
                   );
                 })
               }
+        
         </div>
         </div>
       </main>
