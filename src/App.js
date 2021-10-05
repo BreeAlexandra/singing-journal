@@ -17,18 +17,21 @@ const [userJournal, setUserJournal] = useState([]);
     
 
 
-    onValue(dbRef, (snapshot) => {
+  onValue(dbRef, (snapshot) => {
       const myData = snapshot.val();
+      
       const entryArray = [];
 
-      for (let propertyName in myData) {
+      for (let key in myData) {
         const journalObject= {
-          key: propertyName,
-          input: myData[propertyName]
+          key: key,
+          date: myData[key].date,
+          time: myData[key].time,
+          text: myData[key].text
         }
+        
         entryArray.push(journalObject);
       }
-      // userJournal(entryArray);
       setUserJournal(entryArray);
     });
   }, []);
@@ -46,15 +49,10 @@ const [userJournal, setUserJournal] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    
-
     
     const dbRef = ref(realtime);
 
-    push(dbRef, userDate);
-    push(dbRef, userTime);
-    push(dbRef, userAccomp);
+    push(dbRef, {date:userDate, time:userTime, text:userAccomp});
   }
 
   
@@ -71,7 +69,7 @@ const [userJournal, setUserJournal] = useState([]);
         </div>
       </header>
       <main>
-        <div className="wrapper">
+        <div className="flexWrapper">
           <form 
           onSubmit={handleSubmit}
           >
@@ -99,31 +97,24 @@ const [userJournal, setUserJournal] = useState([]);
             onChange={handleTextChange}
             value={userAccomp}
             name="accomplishment" 
-            id="accomplishment" cols="30" rows="10" placeholder='What I accomplished today...'></textarea>
+            id="accomplishment" placeholder='What I accomplished today...'></textarea>
             <button>Log Today's Practice</button>
         </form>
         <div className="inputContainer">
-          <p>Date: {userDate}</p>
-          <p>Time: {userTime}</p>
-          <p>What I accomplished today: {userAccomp} </p>
-        </div>
-          
-        
-          {/* {
+          {
             userJournal.map((infoEntered) => {
                 return (
-                  <div key={} className="inputContainer">
-                    <p>Date: {infoEntered.date}</p>
-                    <p>Time: {infoEntered.time}</p>
-                    <p>What I accomplished today: {infoEntered}</p>
-                  </div>
+                  
                   <UserInput 
                   key={infoEntered.key}
-                  date={infoEntered.userDate}
+                  date={infoEntered.date}
+                  time={infoEntered.time}
+                  text={infoEntered.text}
                   />
                   );
                 })
-              } */}
+              }
+        </div>
         </div>
       </main>
       <footer>

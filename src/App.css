@@ -17,13 +17,14 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   letter-spacing: 0.2rem;
 }
 
-.wrapper {
+.wrapper,
+.flexWrapper {
   width: 85%;
   max-width: 1280px;
   margin: 0 auto;
 }
 
-h1, p {
+h1, h2, p {
   margin: 0;
   padding: 0;
 }
@@ -52,12 +53,19 @@ main {
   padding-bottom: 75px;
 }
 
+.flexWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 form {
   font-family: cursive;
   font-size: 2rem;
   color: rgb(34, 34, 34);
   font-weight: bold;
   padding: 75px 0;
+  width: 40%;
 }
 
 label {
@@ -78,7 +86,11 @@ textarea {
   border-radius: 5px;
   border: none;
   margin: 15px 25px;
+  padding: 20px;
   resize: none;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 200px;
 }
 
 .dateContainer,
@@ -88,7 +100,6 @@ textarea {
 
 ::placeholder {
   font-family: cursive;
-  padding: 10px;
 }
 
 button {
@@ -108,11 +119,26 @@ button:hover {
 }
 
 .inputContainer {
+  margin-top: 75px;
+  width: 40%;
+}
+
+.input {
   background-color: rgb(253, 243, 230);
   font-family: cursive;
   border-radius: 5px;
-  margin: 0 25px;
+  margin: 25px 0;
   padding: 10px;
+}
+
+.input p {
+  overflow-wrap: anywhere;
+}
+
+
+h2 {
+  color: rgb(99, 3, 99);
+  text-decoration: underline;
 }
 
 /* FOOTER STYLES */
