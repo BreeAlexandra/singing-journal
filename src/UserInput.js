@@ -12,6 +12,7 @@ const handleRemove = (removeKey) => {
 
     return(    
         <div className="input">
+            <h2>{props.noInput}</h2>
             <h2>My progress:</h2>
             <p>Date: {props.date}</p>
             <p>Time: {props.time} </p>

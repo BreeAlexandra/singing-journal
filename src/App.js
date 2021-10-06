@@ -43,7 +43,7 @@ const [userJournal, setUserJournal] = useState([]);
           key: key,
           date: myData[key].date,
           time: myData[key].time,
-          text: myData[key].text
+          text: myData[key].text,
         }
         
         // push the new objects into an array
@@ -66,20 +66,22 @@ const [userJournal, setUserJournal] = useState([]);
     setUserAccomp(e.target.value);
   } 
 
-
   // push user input to firebase on submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // error handling for if the user doesn't input anything
+    if (userDate && userTime && userAccomp) {
       const dbRef = ref(realtime);
   
       push(dbRef, {date:userDate, time:userTime, text:userAccomp});
-
+  
       setUserDate('');
       setUserTime('');
       setUserAccomp('');
-
-    
+    } else {
+        alert('Please enter some information to log your progress! Happy Singing!') 
+    }
   }
 
   return (
@@ -91,6 +93,7 @@ const [userJournal, setUserJournal] = useState([]);
       </header>
       <main>
         <div className="flexWrapper">
+          
           <form 
           onSubmit={handleSubmit}
           >
@@ -123,8 +126,7 @@ const [userJournal, setUserJournal] = useState([]);
         </form>
         <div className="inputContainer">
           {
-            userJournal.map((infoEntered) => {
-              
+            userJournal.map((infoEntered) => {              
                 return (  
                     <UserInput 
                     key={infoEntered.key}
@@ -135,8 +137,7 @@ const [userJournal, setUserJournal] = useState([]);
                     />
                   );
                 })
-              }
-        
+              }        
         </div>
         </div>
       </main>

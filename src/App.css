@@ -177,6 +177,7 @@ footer p a {
   textarea {
     margin: 0;
   }
+
   .dateContainer,
   .timeContainer {
     width: 50%;
@@ -199,7 +200,6 @@ footer p a {
   form {
     font-size: 1.25rem;
   }
-
   footer p {
     font-size: 1rem;
   }
