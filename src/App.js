@@ -7,7 +7,7 @@
 // Display user input
 
 
-
+// api key: 6463fe78257840c6a588cfc0134f47a1
 
 import { useState, useEffect } from 'react';
 import realtime from './firebase.js'
@@ -22,6 +22,7 @@ const [userDate, setUserDate] = useState('');
 const [userTime, setUserTime] = useState('');
 const [userAccomp, setUserAccomp] = useState(''); 
 const [userJournal, setUserJournal] = useState([]);
+const [style, setStyle] = useState('flexWrapper');
 
 
 // use useEffect with an empty dependency array so the call function is only called once
@@ -84,6 +85,10 @@ const [userJournal, setUserJournal] = useState([]);
     }
   }
 
+  const changeStyle = () => {
+    setStyle('flexWrapper2');
+  }
+
   return (
     <div className="App">
       <header>
@@ -92,19 +97,21 @@ const [userJournal, setUserJournal] = useState([]);
         </div>
       </header>
       <main>
-        <div className="flexWrapper">
+        <div className={style}>
           
           <form 
           onSubmit={handleSubmit}
           >
             <div className="dateContainer">
                 <label htmlFor="date">Date: </label>
-                <input 
-                type="date"
-                id='date'
-                onChange={handleDateChange}
-                value={userDate}
-                />
+                <span className="hover">
+                  <input 
+                  type="date"
+                  id='date'
+                  onChange={handleDateChange}
+                  value={userDate}
+                  />
+                </span>
             </div>
             <div className="timeContainer">
                 <label htmlFor="time">Time: </label>
@@ -122,7 +129,7 @@ const [userJournal, setUserJournal] = useState([]);
             value={userAccomp}
             name="accomplishment" 
             id="accomplishment" placeholder='What I accomplished today...'></textarea>
-            <button className='log'>Log Today's Practice</button>
+            <button className='log' onClick={changeStyle}>Log Today's Practice</button>
         </form>
         <div className="inputContainer">
           {

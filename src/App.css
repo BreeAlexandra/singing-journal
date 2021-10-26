@@ -18,7 +18,8 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 }
 
 .wrapper,
-.flexWrapper {
+.flexWrapper,
+.flexWrapper2 {
   width: 85%;
   max-width: 1280px;
   margin: 0 auto;
@@ -32,8 +33,9 @@ h1, h2, p {
 /* HEADER STYLES */
 
 header {
-  background-color: rgb(99, 3, 99);
-  height: 40vh;
+  background: url('./assets/headerImg.jpeg') center;
+  background-size: cover;
+  height: 75vh;
 }
 
 h1 {
@@ -43,7 +45,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 40vh;
+  height: 75vh;
 }
 
 /* MAIN STYLES */
@@ -55,6 +57,14 @@ main {
 
 .flexWrapper {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flexWrapper2 {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -69,15 +79,15 @@ form {
 }
 
 label {
-  margin: 10px 25px;
+  margin: 10px 0;
 }
 
 input[type=date],
 input[type=time] {
   display: block;
-  background-color: rgb(177, 177, 177);;
+  background-color: rgb(177, 177, 177);
   border: none;
-  margin: 5px 25px;
+  margin: 5px 0;
 }
 
 textarea {
@@ -85,7 +95,7 @@ textarea {
   background-color: rgb(253, 243, 230);
   border-radius: 5px;
   border: none;
-  margin: 15px 25px;
+  margin: 15px 0;
   padding: 20px;
   resize: none;
   width: 100%;
@@ -100,13 +110,14 @@ textarea {
 
 ::placeholder {
   font-family: cursive;
+  color: black;
 }
 
 button {
   font-family: cursive;
   background-color: rgb(99, 3, 99);
   color: rgb(253, 243, 230);
-  margin: 25px 25px 0 25px;
+  margin-top: 25px;
   padding: 10px 25px;
   border-radius: 5px;
   border: none;
