@@ -23,6 +23,7 @@ const [userTime, setUserTime] = useState('');
 const [userAccomp, setUserAccomp] = useState(''); 
 const [userJournal, setUserJournal] = useState([]);
 const [style, setStyle] = useState('flexWrapper');
+const [error,setError] = useState('');
 
 
 // use useEffect with an empty dependency array so the call function is only called once
@@ -80,13 +81,16 @@ const [style, setStyle] = useState('flexWrapper');
       setUserDate('');
       setUserTime('');
       setUserAccomp('');
+      setError('');
     } else {
-        alert('Please enter some information to log your progress! Happy Singing!') 
+      setError('Please enter some information to log your progress! Happy Singing!') 
     }
   }
 
   const changeStyle = () => {
-    setStyle('flexWrapper2');
+    if (userDate && userTime && userAccomp) {
+      setStyle('flexWrapper2');
+    }
   }
 
   return (
@@ -98,7 +102,6 @@ const [style, setStyle] = useState('flexWrapper');
       </header>
       <main>
         <div className={style}>
-          
           <form 
           onSubmit={handleSubmit}
           >
@@ -129,23 +132,24 @@ const [style, setStyle] = useState('flexWrapper');
             value={userAccomp}
             name="accomplishment" 
             id="accomplishment" placeholder='What I accomplished today...'></textarea>
+            <p>{error}</p>
             <button className='log' onClick={changeStyle}>Log Today's Practice</button>
-        </form>
-        <div className="inputContainer">
-          {
-            userJournal.map((infoEntered) => {              
-                return (  
-                    <UserInput 
-                    key={infoEntered.key}
-                    removeKey={infoEntered.key}
-                    date={infoEntered.date}
-                    time={infoEntered.time}
-                    text={infoEntered.text}
-                    />
-                  );
-                })
-              }        
-        </div>
+          </form>
+          <div className="inputContainer">
+            {
+              userJournal.map((infoEntered) => {              
+                  return (  
+                      <UserInput 
+                      key={infoEntered.key}
+                      removeKey={infoEntered.key}
+                      date={infoEntered.date}
+                      time={infoEntered.time}
+                      text={infoEntered.text}
+                      />
+                    );
+                  })
+                }        
+          </div>
         </div>
       </main>
       <footer>

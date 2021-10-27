@@ -75,7 +75,7 @@ form {
   color: rgb(34, 34, 34);
   font-weight: bold;
   padding: 75px 0;
-  width: 40%;
+  width: 50%;
 }
 
 label {
@@ -127,6 +127,10 @@ button:hover {
   background-color: rgb(253, 243, 230);
   color: rgb(99, 3, 99);
   transition: .5s ease-in-out;
+}
+
+form p {
+  padding: 15px 0;
 }
 
 .inputContainer {
